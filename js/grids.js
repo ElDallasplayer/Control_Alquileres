@@ -1,8 +1,12 @@
 function MakeGrid(data,elementId){
+  console.log("INGRESA FUNCION")
+  try{
     let container = new gridjs.Grid(data).render(document.getElementById(elementId));
     $(".gridjs-search-input").attr("placeholder","Buscar...");
+  }catch(E){
+    console.log(E)
+  }
 }
-
 function MakeGridExample(){
     let container = new gridjs.Grid({
         columns: [

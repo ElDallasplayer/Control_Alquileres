@@ -1,5 +1,4 @@
-function InsertComponent(insertToById,urlComponent){
-    $(document).ready(function () {
-        $('#' + insertToById).load("./componentes/" + urlComponent + ".html");
-    });
+async function InsertComponent(insertToById,urlComponent){
+    $("#PrincipalContainer").remove();
+    $('#' + insertToById).load("./componentes/" + urlComponent + ".html");
 }

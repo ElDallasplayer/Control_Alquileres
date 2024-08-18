@@ -1,9 +1,9 @@
 <!--MODULOS-->
-<script type="module" src="../js/models/alquiler.js"></script>
+<script type="module" src="../js/models/cobro.js"></script>
 
     <div class="row w-100 p-0 m-0 mt-5 justify-content-center">
         <div class="col-10 p-0 m-0 text-center">
-            <h1>ALQUILERES</h1>
+            <h1>COBROS</h1>
         </div>
     </div>
     
@@ -15,22 +15,31 @@
 
 <!--SCRIPTS-->
 <script type="module">
-    import { ObtenerAlquileres } from "../js/models/alquiler.js";
+    import { ObtenerCobros } from "../js/models/cobro.js";
     import { Grid, html, h } from "https://unpkg.com/gridjs?module";
 
     console.log("carga la funcion")
-    let alquileresJson = await ObtenerAlquileres();
+    let cobrosJson = await ObtenerCobros();
     $("#tableContainer").empty();
-    if(alquileresJson != undefined){
+    if(cobrosJson != undefined){
         MakeGrid({
         columns: [
+            {
+                id:"id",
+                name: "ID",
+                hidden: true
+            },
         {
-            id: 'id',
-            name: "ID",
-        }, 
+            id: 'mes_nombre',
+            name: "Mes",
+        },
         {
-            id: 'nombre',
-            name: "Nombre"
+            id: "alquiler_nombre",
+            name: "Alquiler"
+        },
+        {
+            id: 'valorpago',
+            name: "Valor pagado"
         },
         { 
             name: 'Actions',
@@ -43,7 +52,7 @@
         }
         ],
         search: true,
-        data: alquileresJson
+        data: cobrosJson
         },
         "tableContainer"
         )

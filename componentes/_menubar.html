@@ -24,12 +24,25 @@
 
 <!--SECTOR HTML-->
 <nav class="row p-0 m-0 menuBar justify-content-center">
-            <div class="col-3 p-0 m-0 text-center">
-                    <a class="nav-link" href="#">Impuestos</a>
-            </div>
+    <div class="col-3 p-0 m-0 text-center">
+        <span class="nav-link" href="_index">Alquileres</span>
+    </div>
+    
+    <div class="col-3 p-0 m-0 text-center">
+        <span class="nav-link" href="_impuestos">Impuestos</span>
+    </div>
         
-            <div class="col-3 p-0 m-0 text-center">
-                    <a class="nav-link" href="#">Cobros</a>
-            </div>
+    <div class="col-3 p-0 m-0 text-center">
+       <span class="nav-link" href="_cobros">Cobros</span>
+    </div>
 </nav>
 
+<!--SCRIPTS-->
+<script>
+    $(".nav-link").on("click", (e) =>{
+        e.stopImmediatePropagation();
+    
+        let referencia = e.target.getAttribute("href");
+        InsertComponent("principal-container",referencia);
+    })
+</script>
