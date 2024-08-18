@@ -1,2 +1,4 @@
 id,mes,completo,inquilino,alquiler,valorpago
-1,2,true,1,1,250000
+1,4,true,1,1,250000
+2,3,true,1,1,250000
+3,4,true,1,2,250000

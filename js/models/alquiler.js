@@ -1,4 +1,5 @@
 import {ReadData} from "../lector.js";
+import {ObtenerCobros,ObtenerCobros_ParaAlquiler} from "./cobro.js";
 
 export async function ObtenerAlquileres(){
     
@@ -11,6 +12,7 @@ export async function ObtenerAlquileres(){
          arrayJson.push({
              id: Number(linea[0]),
              nombre: linea[1],
+             ultimo_mes_cobrado: await ObtenerUltimoMesCobrado(Number(linea[0])),
              referencia: linea[2],
              inquilino: Number(linea[3]),
              cobrar: Number(linea[4]),
@@ -19,4 +21,17 @@ export async function ObtenerAlquileres(){
          })
     }
     return arrayJson;
+}
+
+async function ObtenerUltimoMesCobrado(idAlquiler){
+    let cobrosJson = await ObtenerCobros_ParaAlquiler(idAlquiler);
+    console.log(cobrosJson)
+     if(cobrosJson.length > 0){
+         let cobroMayor = cobrosJson.reduce((previous, current) => {
+             return current[1] > previous[1] ? current : previous;
+           });
+         return cobroMayor.mes_nombre;
+     }else{
+         return "--";
+     }
 }

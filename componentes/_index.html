@@ -27,13 +27,18 @@
         {
             id: 'id',
             name: "ID",
+            hidden: true
         }, 
         {
             id: 'nombre',
             name: "Nombre"
         },
+        {
+            id:"ultimo_mes_cobrado",
+            name: "Ultimo cobro"
+        },
         { 
-            name: 'Actions',
+            name: '',
             formatter: (cell, row) => {
             return h('i', {
                 className: 'mdi mdi-pencil botonTabla',

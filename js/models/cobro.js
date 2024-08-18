@@ -2,10 +2,8 @@ import {ReadData} from "../lector.js";
 import { ObtenerAlquileres } from "./alquiler.js";
 
 export async function ObtenerCobros(){
-    
     let arrayJson = [];
     let datos = await ReadData("cobros")
-     
     for (var i = 1; i < datos.length; i++) 
     {
          var linea = datos[i];
@@ -19,6 +17,27 @@ export async function ObtenerCobros(){
             alquiler_nombre: await ObtenerAlquilerNombre(Number(linea[4])),
             valorpago: Number(linea[5])
          })
+    }
+    return arrayJson
+}
+
+export async function ObtenerCobros_ParaAlquiler(idAlquiler) {
+    let arrayJson = [];
+    let datos = await ReadData("cobros")
+    for (var i = 1; i < datos.length; i++) 
+    {
+         var linea = datos[i];
+         if(Number(linea[0]) == idAlquiler){
+            arrayJson.push({
+                id: Number(linea[0]),
+                mes: Number(linea[1]),
+                mes_nombre: CalcularMes(Number(linea[1])),
+                completo: linea[2],
+                inquilino: Number(linea[3]),
+                alquiler: Number(linea[4]),
+                valorpago: Number(linea[5])
+             })
+         }
     }
     return arrayJson
 }
